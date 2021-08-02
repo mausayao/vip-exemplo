@@ -20,24 +20,39 @@ class TitlesInteractorImplementation: TitlesInteractor {
     
     var presenter: TitlesPresenter?
     
-    private let titleService: TitleService = TitleService()
+    private let titleService: TitleService = TitleServiceImplementation()
     private var titles: [Title] = []
     
     func viewDidLoad() {
-        titles = titleService.getTitle()
-        presenter?.interactor(didRetrieveTitles: titles)
+        do {
+            titles = try titleService.getTitle()
+            presenter?.interactor(didRetrieveTitles: titles)
+        } catch {
+            presenter?.interactor(didFailRetrieveTitles: error)
+        }
+        
     }
     
     func addTaped(with text: String) {
-        let title = titleService.addTitle(text: text)
-        self.titles.append(title)
-        presenter?.interactor(didAddTitle: title)
+        do {
+            let title = try titleService.addTitle(text: text)
+            self.titles.append(title)
+            presenter?.interactor(didAddTitle: title)
+        } catch {
+            presenter?.interactor(didFailAddTitle: error)
+        }
+       
     }
     
     func didCommitDelete(for index: Int) {
-        titleService.deleteTitle(with: titles[index].id)
-        self.titles.remove(at: index)
-        presenter?.interactor(didDeleteTitleAtIndex: index)
+        do {
+            try titleService.deleteTitle(with: titles[index].id!)
+            self.titles.remove(at: index)
+            presenter?.interactor(didDeleteTitleAtIndex: index)
+        } catch {
+            presenter?.interactor(didFailDeleteTitleAtIndex: index)
+        }
+        
     }
     
     func didSelectRow(at index: Int) {

@@ -16,14 +16,17 @@ class TitleDetailInteractorImplemantation: TitleDetailInteractor {
     var titleId: String?
     var presenter: TitleDetailPresenter?
     
-    private let titleService = TitleService()
+    private let titleService = TitleServiceImplementation()
     
     func viewDidLoad() {
-        if let title = titleService.getTitle(with: titleId!) {
-            presenter?.interactor(didRetrieveTitle: title)
-        } else {
-            presenter?.interactor(didFailRetrieveTitle: "Not load view")
+        do {
+            if let title = try titleService.getTitle(with: titleId!) {
+                presenter?.interactor(didRetrieveTitle: title)
+            }
+        } catch {
+            presenter?.interactor(didFailRetrieveTitle: error)
         }
+       
     }
     
     

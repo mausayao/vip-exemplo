@@ -34,7 +34,10 @@ class TitlesPresenterImplementation: TitlesPresenter {
     }
     
     func interactor(didAddTitle title: Title) {
-        viewController?.presenter(didAddItem: title.text)
+        if let titleString = title.text {
+            viewController?.presenter(didAddItem: titleString)
+        }
+        
     }
     
     func interactor(didFailAddTitle error: Error) {
@@ -50,7 +53,10 @@ class TitlesPresenterImplementation: TitlesPresenter {
     }
     
     func interactor(didFindTitle title: Title) {
-        viewController?.presenter(didObtainItemId: title.id)
+        if let id = title.id {
+            viewController?.presenter(didObtainItemId: id)
+        }
+        
     }
     
 }

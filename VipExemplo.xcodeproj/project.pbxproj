@@ -19,12 +19,13 @@
 		B0418B4026B20FD10018397D /* TitlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0418B3F26B20FD10018397D /* TitlesViewController.swift */; };
 		B0418B4226B214750018397D /* TitlesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0418B4126B214750018397D /* TitlesInteractor.swift */; };
 		B072A24826B2CB9200F02419 /* TitlesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072A24726B2CB9200F02419 /* TitlesPresenter.swift */; };
-		B072A24C26B2CD7900F02419 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072A24B26B2CD7900F02419 /* Title.swift */; };
 		B072A24E26B2DA0200F02419 /* TitlesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B072A24D26B2DA0100F02419 /* TitlesRouter.swift */; };
 		B077890626B71AB2009DCB32 /* TitleDetailIteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077890526B71AB2009DCB32 /* TitleDetailIteractor.swift */; };
 		B077890826B71AD1009DCB32 /* TitleDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077890726B71AD1009DCB32 /* TitleDetailPresenter.swift */; };
 		B077890B26B721EB009DCB32 /* TitleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077890A26B721EB009DCB32 /* TitleService.swift */; };
 		B077890E26B85826009DCB32 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077890D26B85826009DCB32 /* Extensions.swift */; };
+		B077891226B89CBD009DCB32 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B077891026B89CBD009DCB32 /* Model.xcdatamodeld */; };
+		B077891526B89D3F009DCB32 /* PersistentContainerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077891426B89D3F009DCB32 /* PersistentContainerProvider.swift */; };
 		B0AB1BF626B466A800A2CF6D /* TitleDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB1BF526B466A800A2CF6D /* TitleDetailConfigurator.swift */; };
 		B0AB1BF826B466CA00A2CF6D /* TitleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB1BF726B466CA00A2CF6D /* TitleDetailView.swift */; };
 		B0AB1BFA26B48E9F00A2CF6D /* TitleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB1BF926B48E9F00A2CF6D /* TitleDetailViewController.swift */; };
@@ -66,12 +67,13 @@
 		B0418B3F26B20FD10018397D /* TitlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesViewController.swift; sourceTree = "<group>"; };
 		B0418B4126B214750018397D /* TitlesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesInteractor.swift; sourceTree = "<group>"; };
 		B072A24726B2CB9200F02419 /* TitlesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesPresenter.swift; sourceTree = "<group>"; };
-		B072A24B26B2CD7900F02419 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
 		B072A24D26B2DA0100F02419 /* TitlesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesRouter.swift; sourceTree = "<group>"; };
 		B077890526B71AB2009DCB32 /* TitleDetailIteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailIteractor.swift; sourceTree = "<group>"; };
 		B077890726B71AD1009DCB32 /* TitleDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailPresenter.swift; sourceTree = "<group>"; };
 		B077890A26B721EB009DCB32 /* TitleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleService.swift; sourceTree = "<group>"; };
 		B077890D26B85826009DCB32 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B077891126B89CBD009DCB32 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B077891426B89D3F009DCB32 /* PersistentContainerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainerProvider.swift; sourceTree = "<group>"; };
 		B0AB1BF526B466A800A2CF6D /* TitleDetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailConfigurator.swift; sourceTree = "<group>"; };
 		B0AB1BF726B466CA00A2CF6D /* TitleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailView.swift; sourceTree = "<group>"; };
 		B0AB1BF926B48E9F00A2CF6D /* TitleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		B0418B0626B1FDCB0018397D /* VipExemplo */ = {
 			isa = PBXGroup;
 			children = (
+				B077891326B89D22009DCB32 /* Storage */,
 				B072A24926B2CD4300F02419 /* BusinessLogicLayer */,
 				B0418B3826B202FD0018397D /* PresentationLayer */,
 				B0418B3726B202C50018397D /* ApplicationLayer */,
@@ -197,18 +200,10 @@
 		B072A24926B2CD4300F02419 /* BusinessLogicLayer */ = {
 			isa = PBXGroup;
 			children = (
+				B077890F26B89C9B009DCB32 /* Entities */,
 				B077890926B721D7009DCB32 /* Services */,
-				B072A24A26B2CD6000F02419 /* Models */,
 			);
 			path = BusinessLogicLayer;
-			sourceTree = "<group>";
-		};
-		B072A24A26B2CD6000F02419 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				B072A24B26B2CD7900F02419 /* Title.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		B077890926B721D7009DCB32 /* Services */ = {
@@ -225,6 +220,22 @@
 				B077890D26B85826009DCB32 /* Extensions.swift */,
 			);
 			path = Commom;
+			sourceTree = "<group>";
+		};
+		B077890F26B89C9B009DCB32 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				B077891026B89CBD009DCB32 /* Model.xcdatamodeld */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		B077891326B89D22009DCB32 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B077891426B89D3F009DCB32 /* PersistentContainerProvider.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		B0AB1BF426B4647500A2CF6D /* TitleDetail */ = {
@@ -370,9 +381,10 @@
 			files = (
 				B077890B26B721EB009DCB32 /* TitleService.swift in Sources */,
 				B0AB1BF826B466CA00A2CF6D /* TitleDetailView.swift in Sources */,
+				B077891526B89D3F009DCB32 /* PersistentContainerProvider.swift in Sources */,
 				B0418B0C26B1FDCB0018397D /* ViewController.swift in Sources */,
-				B072A24C26B2CD7900F02419 /* Title.swift in Sources */,
 				B0AB1BF626B466A800A2CF6D /* TitleDetailConfigurator.swift in Sources */,
+				B077891226B89CBD009DCB32 /* Model.xcdatamodeld in Sources */,
 				B077890826B71AD1009DCB32 /* TitleDetailPresenter.swift in Sources */,
 				B0418B0826B1FDCB0018397D /* AppDelegate.swift in Sources */,
 				B077890626B71AB2009DCB32 /* TitleDetailIteractor.swift in Sources */,
@@ -703,6 +715,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B077891026B89CBD009DCB32 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B077891126B89CBD009DCB32 /* Model.xcdatamodel */,
+			);
+			currentVersion = B077891126B89CBD009DCB32 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B0418AFC26B1FDCB0018397D /* Project object */;
 }

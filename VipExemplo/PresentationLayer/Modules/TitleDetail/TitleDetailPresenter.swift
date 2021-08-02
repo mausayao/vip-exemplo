@@ -9,7 +9,7 @@ import Foundation
 
 protocol TitleDetailPresenter: AnyObject {
     func interactor(didRetrieveTitle title: Title)
-    func interactor(didFailRetrieveTitle error: String)
+    func interactor(didFailRetrieveTitle error: Error)
 }
 
 class TitleDetailPresenteImplematation: TitleDetailPresenter {
@@ -18,11 +18,11 @@ class TitleDetailPresenteImplematation: TitleDetailPresenter {
     
     func interactor(didRetrieveTitle title: Title) {
         let titleString = title.text
-        viewController?.presenter(didRetrieveItem: titleString)
+        viewController?.presenter(didRetrieveItem: titleString ?? "")
     }
     
-    func interactor(didFailRetrieveTitle error: String) {
-        viewController?.presener(didFailRetrieveItem: error)
+    func interactor(didFailRetrieveTitle error: Error) {
+        viewController?.presener(didFailRetrieveItem: error.localizedDescription)
     }
     
     

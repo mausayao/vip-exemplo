@@ -16,3 +16,7 @@ class Title {
         self.text = text
     }
 }
+
+extension Title {
+    static var titles: [Title] = []
+}

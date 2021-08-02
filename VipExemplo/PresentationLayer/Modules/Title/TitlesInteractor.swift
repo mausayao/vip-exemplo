@@ -20,19 +20,22 @@ class TitlesInteractorImplementation: TitlesInteractor {
     
     var presenter: TitlesPresenter?
     
+    private let titleService: TitleService = TitleService()
     private var titles: [Title] = []
     
     func viewDidLoad() {
+        titles = titleService.getTitle()
         presenter?.interactor(didRetrieveTitles: titles)
     }
     
     func addTaped(with text: String) {
-        let title = Title(text: text)
+        let title = titleService.addTitle(text: text)
         self.titles.append(title)
         presenter?.interactor(didAddTitle: title)
     }
     
     func didCommitDelete(for index: Int) {
+        titleService.deleteTitle(with: titles[index].id)
         self.titles.remove(at: index)
         presenter?.interactor(didDeleteTitleAtIndex: index)
     }

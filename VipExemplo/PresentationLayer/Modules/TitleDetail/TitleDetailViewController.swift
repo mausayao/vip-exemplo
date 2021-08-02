@@ -16,7 +16,7 @@ class TitleDetailViewController: UIViewController {
     
     // MARK: - properties
     
-    var titleDetailVIew: TitleDetailView?
+    var titleDetailView: TitleDetailView?
     var interactor: TitleDetailInteractor?
     weak var presenter: TitleDetailPresenter?
     
@@ -24,7 +24,7 @@ class TitleDetailViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.view = titleDetailVIew
+        self.view = titleDetailView
     }
     
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class TitleDetailViewController: UIViewController {
 
 extension TitleDetailViewController: TitleDetailPresenterOutput {
     func presenter(didRetrieveItem item: String) {
-        titleDetailVIew?.updateLabel(with: item)
+        titleDetailView?.updateLabel(with: item)
     }
     
     func presener(didFailRetrieveItem message: String) {

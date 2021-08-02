@@ -14,9 +14,12 @@ protocol TitlesRouter: AnyObject {
 }
 
 class TitlesRouterImplementation: TitlesRouter {
-    var navigationController: UINavigationController?
+    weak var navigationController: UINavigationController?
     
     func routeToDetail(with id: String) {
+        let viewController = TitleDetailViewController()
+        TitileDetailConfigurator.configureModule(titleId: id, viewController: viewController)
         
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

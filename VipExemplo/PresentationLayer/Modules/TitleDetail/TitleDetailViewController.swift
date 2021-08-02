@@ -35,23 +35,6 @@ class TitleDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    private func showError(with message: String) {
-        let alert = UIAlertController(
-            title: "Error",
-            message: message,
-            preferredStyle: .alert
-        )
-        
-        let okAction = UIAlertAction(
-            title: "Ok",
-            style: .default,
-            handler: nil
-        )
-        
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    }
 }
 
 extension TitleDetailViewController: TitleDetailPresenterOutput {

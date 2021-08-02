@@ -24,6 +24,7 @@
 		B077890626B71AB2009DCB32 /* TitleDetailIteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077890526B71AB2009DCB32 /* TitleDetailIteractor.swift */; };
 		B077890826B71AD1009DCB32 /* TitleDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077890726B71AD1009DCB32 /* TitleDetailPresenter.swift */; };
 		B077890B26B721EB009DCB32 /* TitleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077890A26B721EB009DCB32 /* TitleService.swift */; };
+		B077890E26B85826009DCB32 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B077890D26B85826009DCB32 /* Extensions.swift */; };
 		B0AB1BF626B466A800A2CF6D /* TitleDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB1BF526B466A800A2CF6D /* TitleDetailConfigurator.swift */; };
 		B0AB1BF826B466CA00A2CF6D /* TitleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB1BF726B466CA00A2CF6D /* TitleDetailView.swift */; };
 		B0AB1BFA26B48E9F00A2CF6D /* TitleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AB1BF926B48E9F00A2CF6D /* TitleDetailViewController.swift */; };
@@ -70,6 +71,7 @@
 		B077890526B71AB2009DCB32 /* TitleDetailIteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailIteractor.swift; sourceTree = "<group>"; };
 		B077890726B71AD1009DCB32 /* TitleDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailPresenter.swift; sourceTree = "<group>"; };
 		B077890A26B721EB009DCB32 /* TitleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleService.swift; sourceTree = "<group>"; };
+		B077890D26B85826009DCB32 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B0AB1BF526B466A800A2CF6D /* TitleDetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailConfigurator.swift; sourceTree = "<group>"; };
 		B0AB1BF726B466CA00A2CF6D /* TitleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailView.swift; sourceTree = "<group>"; };
 		B0AB1BF926B48E9F00A2CF6D /* TitleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDetailViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		B0418B3926B2035D0018397D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B077890C26B857EA009DCB32 /* Commom */,
 				B0AB1BF426B4647500A2CF6D /* TitleDetail */,
 				B0418B3A26B203710018397D /* Title */,
 			);
@@ -214,6 +217,14 @@
 				B077890A26B721EB009DCB32 /* TitleService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B077890C26B857EA009DCB32 /* Commom */ = {
+			isa = PBXGroup;
+			children = (
+				B077890D26B85826009DCB32 /* Extensions.swift */,
+			);
+			path = Commom;
 			sourceTree = "<group>";
 		};
 		B0AB1BF426B4647500A2CF6D /* TitleDetail */ = {
@@ -371,6 +382,7 @@
 				B0418B3E26B204210018397D /* TitlesView.swift in Sources */,
 				B072A24826B2CB9200F02419 /* TitlesPresenter.swift in Sources */,
 				B0418B3C26B203AB0018397D /* TitleConfigurator.swift in Sources */,
+				B077890E26B85826009DCB32 /* Extensions.swift in Sources */,
 				B0AB1BFA26B48E9F00A2CF6D /* TitleDetailViewController.swift in Sources */,
 				B0418B4226B214750018397D /* TitlesInteractor.swift in Sources */,
 			);

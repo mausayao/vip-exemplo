@@ -28,7 +28,7 @@ class TitlesViewController: UIViewController {
     var interactor: TitlesInteractor?
     var router: TitlesRouter?
     
-    private var items: [String] = []
+    internal var items: [String] = []
     
     lazy var addBarButtonIten: UIBarButtonItem = {
         let item = UIBarButtonItem(
@@ -42,13 +42,11 @@ class TitlesViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view = titlesView
-        titlesView?.tableVIew.delegate = self
-        titlesView?.tableVIew.dataSource = self
+        titlesView?.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         interactor?.viewDidLoad()
     }
     
@@ -130,32 +128,13 @@ extension TitlesViewController: TitlesPresenterOutput {
 }
 
 // MARK: - UITableView DataSource & Delegate
-extension TitlesViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items.isEmpty ? titlesView?.showPlaceHolder() : titlesView?.hidePlaceHolder()
-        
-        return items.count
+
+extension TitlesViewController: TitleViewDelegate {
+    func didCommitDelete(for index: Int) {
+        self.interactor?.didCommitDelete(for: index)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
-            return UITableViewCell()
-        }
-        
-        cell.textLabel?.text = self.items[indexPath.row]
-        cell.selectionStyle = .none
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            self.interactor?.didCommitDelete(for: indexPath.row)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.interactor?.didSelectRow(at: indexPath.row)
+    func didSelectRow(at index: Int) {
+        self.interactor?.didSelectRow(at: index)
     }
 }

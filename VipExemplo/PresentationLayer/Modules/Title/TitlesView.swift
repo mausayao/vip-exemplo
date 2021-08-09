@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol TitleViewDelegate: AnyObject {
+    var items: [String] {set get}
+    func didCommitDelete(for index: Int)
+    func didSelectRow(at index: Int)
+}
+
 class TitlesView: UIView {
     
     //MARK: - properties
@@ -27,10 +33,14 @@ class TitlesView: UIView {
         return uiLabel
     }()
     
+    weak var delegate: TitleViewDelegate?
+    
     // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupUI()
+        tableVIew.delegate = self
+        tableVIew.dataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -76,6 +86,39 @@ class TitlesView: UIView {
     func reloadTableView() {
         self.tableVIew.reloadData()
     }
+    
+}
+
+extension TitlesView: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let items =  self.delegate?.items else { return 0}
+        items.isEmpty ? showPlaceHolder() : hidePlaceHolder()
+        
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
+            return UITableViewCell()
+        }
+        
+        cell.textLabel?.text = self.delegate?.items[indexPath.row]
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.delegate?.didCommitDelete(for: indexPath.row)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.didSelectRow(at: indexPath.row)
+    }
+    
     
 }
 

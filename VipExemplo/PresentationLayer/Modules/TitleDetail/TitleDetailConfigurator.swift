@@ -11,9 +11,10 @@ class TitileDetailConfigurator {
     
     static func configureModule(titleId: String, viewController: TitleDetailViewController) {
         
+        let presenter = TitleDetailPresenteImplematation()
         let view = TitleDetailView()
         let interactor = TitleDetailInteractorImplemantation()
-        let presenter = TitleDetailPresenteImplematation()
+        
         
         interactor.titleId = titleId
         

@@ -17,16 +17,17 @@ protocol TitlesPresenterOutput: AnyObject {
     func presenter(didDeleteItemAtIndex index: Int)
     func presenter(didFailDeleteItemAtIndex index: Int, message: String)
     
-    func presenter(didObtainItemId id: String)
+    func presenter()
     func presenter(didFailObtainItemId message: String)
 }
 
 class TitlesViewController: UIViewController {
     
     // MARK: - properties
-    var titlesView: TitlesView?
-    var interactor: TitlesInteractor?
-    var router: TitlesRouter?
+    
+    private let titlesView: TitlesView
+    private let interactor: TitlesInteractor
+    private let router: TitlesRouter
     
     internal var items: [String] = []
     
@@ -38,16 +39,28 @@ class TitlesViewController: UIViewController {
         return item
     }()
     
+    init(titlesView: TitlesView, interactor: TitlesInteractor, router: TitlesRouter) {
+        self.titlesView = titlesView
+        self.interactor = interactor
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - lifecycle
+    
     override func loadView() {
         super.loadView()
         self.view = titlesView
-        titlesView?.delegate = self
+        titlesView.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor?.viewDidLoad()
+        interactor.getTitles()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +71,7 @@ class TitlesViewController: UIViewController {
     }
     
     // MARK: - actions
+    
     @objc func addBarButtonItemTapped() {
         
         let alert = UIAlertController(
@@ -72,8 +86,8 @@ class TitlesViewController: UIViewController {
         
         let okAction = UIAlertAction(
             title: "Add",
-            style: .default) { [unowned self] action in
-            self.interactor?.addTaped(with: alert.textFields?.first?.text ?? "")
+            style: .default) { [weak self] action in
+            self?.interactor.addTaped(with: alert.textFields?.first?.text ?? "")
         }
         
         let cancelAction = UIAlertAction(
@@ -90,10 +104,11 @@ class TitlesViewController: UIViewController {
 }
 
 // MARK: - presenter output
+
 extension TitlesViewController: TitlesPresenterOutput {
     func presenter(didRetrieveItems items: [String]) {
         self.items = items
-        self.titlesView?.reloadTableView()
+        self.titlesView.reloadTableView()
     }
     
     func presenter(didFailRetrieveItems message: String) {
@@ -102,7 +117,7 @@ extension TitlesViewController: TitlesPresenterOutput {
     
     func presenter(didAddItem item: String) {
         self.items.append(item)
-        self.titlesView?.insertRowAt(at: self.items.count - 1)
+        self.titlesView.insertRowAt(at: self.items.count - 1)
     }
     
     func presenter(didFailAddItem message: String) {
@@ -111,15 +126,15 @@ extension TitlesViewController: TitlesPresenterOutput {
     
     func presenter(didDeleteItemAtIndex index: Int) {
         self.items.remove(at: index)
-        self.titlesView?.deleteRow(at: index)
+        self.titlesView.deleteRow(at: index)
     }
     
     func presenter(didFailDeleteItemAtIndex index: Int, message: String) {
         showError(with: message)
     }
     
-    func presenter(didObtainItemId id: String) {
-        self.router?.routeToDetail(with: id)
+    func presenter() {
+        self.router.routeToDetail()
     }
     
     func presenter(didFailObtainItemId message: String) {
@@ -131,10 +146,10 @@ extension TitlesViewController: TitlesPresenterOutput {
 
 extension TitlesViewController: TitleViewDelegate {
     func didCommitDelete(for index: Int) {
-        self.interactor?.didCommitDelete(for: index)
+        self.interactor.didCommitDelete(for: index)
     }
     
     func didSelectRow(at index: Int) {
-        self.interactor?.didSelectRow(at: index)
+        self.interactor.didSelectRow(at: index)
     }
 }

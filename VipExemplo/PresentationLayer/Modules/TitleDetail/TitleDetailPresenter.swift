@@ -8,21 +8,21 @@
 import Foundation
 
 protocol TitleDetailPresenter: AnyObject {
-    func interactor(didRetrieveTitle title: Title)
-    func interactor(didFailRetrieveTitle error: Error)
+    func interactor(didRetrieveTitle title: TitleModel.Title)
+    func interactor(didFailRetrieveTitle error: String)
 }
 
 class TitleDetailPresenteImplematation: TitleDetailPresenter {
     
     weak var viewController: TitleDetailViewController?
     
-    func interactor(didRetrieveTitle title: Title) {
+    func interactor(didRetrieveTitle title: TitleModel.Title) {
         let titleString = title.text
-        viewController?.presenter(didRetrieveItem: titleString ?? "")
+        viewController?.presenter(didRetrieveItem: titleString)
     }
     
-    func interactor(didFailRetrieveTitle error: Error) {
-        viewController?.presener(didFailRetrieveItem: error.localizedDescription)
+    func interactor(didFailRetrieveTitle error: String) {
+        viewController?.presener(didFailRetrieveItem: error)
     }
     
     

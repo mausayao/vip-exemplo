@@ -8,7 +8,7 @@
 import CoreData
 
 protocol TitleService: AnyObject {
-    func getTitle() throws -> [Title]
+    func getTitles() throws -> [Title]
     func addTitle(text: String) throws -> Title
     func deleteTitle(with id: String) throws
     func getTitle(with id: String) throws -> Title?
@@ -20,7 +20,7 @@ class TitleServiceImplementation: TitleService {
         persistentContainer.viewContext
     }()
     
-    func getTitle() throws -> [Title] {
+    func getTitles() throws -> [Title] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Title")
         
         do {

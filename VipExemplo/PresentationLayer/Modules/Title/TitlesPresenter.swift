@@ -17,11 +17,11 @@ protocol TitlesPresenter: AnyObject {
     func interactor(didDeleteTitleAtIndex index: Int)
     func interactor(didFailDeleteTitleAtIndex index: Int)
     
-    func interactor(didFindTitle title: Title)
+    func interactor()
+    
 }
 
 class TitlesPresenterImplementation: TitlesPresenter {
-    
     weak var viewController: TitlesPresenterOutput?
     
     func interactor(didRetrieveTitles titles: [Title]) {
@@ -52,11 +52,8 @@ class TitlesPresenterImplementation: TitlesPresenter {
         viewController?.presenter(didFailDeleteItemAtIndex: index, message: "Couldn't delete")
     }
     
-    func interactor(didFindTitle title: Title) {
-        if let id = title.id {
-            viewController?.presenter(didObtainItemId: id)
-        }
-        
+    func interactor() {
+        viewController?.presenter()
     }
     
 }

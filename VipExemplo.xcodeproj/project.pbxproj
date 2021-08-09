@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B038A15626C174D600886399 /* TitleWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B038A15526C174D600886399 /* TitleWorker.swift */; };
+		B038A15826C19B4000886399 /* TitleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B038A15726C19B4000886399 /* TitleModel.swift */; };
 		B0418B0826B1FDCB0018397D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0418B0726B1FDCB0018397D /* AppDelegate.swift */; };
 		B0418B0A26B1FDCB0018397D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0418B0926B1FDCB0018397D /* SceneDelegate.swift */; };
 		B0418B0C26B1FDCB0018397D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0418B0B26B1FDCB0018397D /* ViewController.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B038A15526C174D600886399 /* TitleWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWorker.swift; sourceTree = "<group>"; };
+		B038A15726C19B4000886399 /* TitleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleModel.swift; sourceTree = "<group>"; };
 		B0418B0426B1FDCB0018397D /* VipExemplo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VipExemplo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0418B0726B1FDCB0018397D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0418B0926B1FDCB0018397D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				B0418B4126B214750018397D /* TitlesInteractor.swift */,
 				B072A24726B2CB9200F02419 /* TitlesPresenter.swift */,
 				B072A24D26B2DA0100F02419 /* TitlesRouter.swift */,
+				B038A15526C174D600886399 /* TitleWorker.swift */,
+				B038A15726C19B4000886399 /* TitleModel.swift */,
 			);
 			path = Title;
 			sourceTree = "<group>";
@@ -387,7 +393,9 @@
 				B077891226B89CBD009DCB32 /* Model.xcdatamodeld in Sources */,
 				B077890826B71AD1009DCB32 /* TitleDetailPresenter.swift in Sources */,
 				B0418B0826B1FDCB0018397D /* AppDelegate.swift in Sources */,
+				B038A15626C174D600886399 /* TitleWorker.swift in Sources */,
 				B077890626B71AB2009DCB32 /* TitleDetailIteractor.swift in Sources */,
+				B038A15826C19B4000886399 /* TitleModel.swift in Sources */,
 				B072A24E26B2DA0200F02419 /* TitlesRouter.swift in Sources */,
 				B0418B0A26B1FDCB0018397D /* SceneDelegate.swift in Sources */,
 				B0418B4026B20FD10018397D /* TitlesViewController.swift in Sources */,

@@ -8,23 +8,23 @@
 import Foundation
 
 protocol TitleDetailInteractor {
-    var titleId: String? { get }
-    func viewDidLoad()
+    var title: TitleModel.Title? { get }
+    func loadData()
 }
 
 class TitleDetailInteractorImplemantation: TitleDetailInteractor {
-    var titleId: String?
-    var presenter: TitleDetailPresenter?
+    var title: TitleModel.Title?
+    private let presenter: TitleDetailPresenter
     
-    private let titleService = TitleServiceImplementation()
+    init(presenter: TitleDetailPresenter) {
+        self.presenter = presenter
+    }
     
-    func viewDidLoad() {
-        do {
-            if let title = try titleService.getTitle(with: titleId!) {
-                presenter?.interactor(didRetrieveTitle: title)
-            }
-        } catch {
-            presenter?.interactor(didFailRetrieveTitle: error)
+    func loadData() {
+        if let title = title {
+            presenter.interactor(didRetrieveTitle: title)
+        } else {
+            presenter.interactor(didFailRetrieveTitle: "Not load data")
         }
        
     }

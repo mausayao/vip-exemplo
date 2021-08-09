@@ -9,20 +9,16 @@ import Foundation
 
 class TitileDetailConfigurator {
     
-    static func configureModule(titleId: String, viewController: TitleDetailViewController) {
-        
+    static func configureModule(title: TitleModel.Title) -> TitleDetailViewController {
         let presenter = TitleDetailPresenteImplematation()
+        let interactor = TitleDetailInteractorImplemantation(presenter: presenter)
+        interactor.title = title
+        
         let view = TitleDetailView()
-        let interactor = TitleDetailInteractorImplemantation()
-        
-        
-        interactor.titleId = titleId
-        
-        viewController.titleDetailView = view
-        viewController.interactor = interactor
-        
-        interactor.presenter = presenter
+        let viewController = TitleDetailViewController(view: view, interactor: interactor)
         presenter.viewController = viewController
+        
+        return viewController
         
     }
 }

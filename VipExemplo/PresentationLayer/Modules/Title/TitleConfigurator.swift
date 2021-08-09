@@ -8,20 +8,19 @@
 import UIKit
 
 class TitlesConfigurator {
-    static func configureModule(viewController: TitlesViewController) {
-        let view = TitlesView()
-        let router = TitlesRouterImplementation()
-        let interactor = TitlesInteractorImplementation()
+    static func configureModule() -> TitlesViewController {
         let presenter = TitlesPresenterImplementation()
+        let worker = TitleWorkImplementation(service: TitleServiceImplementation())
+        let interactor = TitlesInteractorImplementation(presenter: presenter, worker: worker)
         
-        viewController.titlesView = view
-        viewController.router = router
-        viewController.interactor = interactor
+        let view = TitlesView()
+        let router = TitlesRouterImplementation(dataStore: interactor)
+       
+        let viewController = TitlesViewController(titlesView: view, interactor: interactor, router: router)
         
-        interactor.presenter = presenter
-        
+        router.viewControlle = viewController
         presenter.viewController = viewController
         
-        router.navigationController = viewController.navigationController
+        return viewController
     }
 }

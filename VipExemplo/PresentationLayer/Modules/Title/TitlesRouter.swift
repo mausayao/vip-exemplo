@@ -8,18 +8,28 @@
 import UIKit
 
 protocol TitlesRouter: AnyObject {
-    var navigationController: UINavigationController? { get }
     
-    func routeToDetail(with id: String)
+    func routeToDetail()
 }
 
-class TitlesRouterImplementation: TitlesRouter {
-    weak var navigationController: UINavigationController?
+protocol TitleDataPassing {
+    var dataStore: TitleDataStore { get }
+}
+
+class TitlesRouterImplementation: TitlesRouter, TitleDataPassing {
+    var dataStore: TitleDataStore
     
-    func routeToDetail(with id: String) {
-        let viewController = TitleDetailViewController()
-        TitileDetailConfigurator.configureModule(titleId: id, viewController: viewController)
-        
-        navigationController?.pushViewController(viewController, animated: true)
+    weak var viewControlle: TitlesViewController?
+    
+    init(dataStore: TitleDataStore) {
+        self.dataStore = dataStore
     }
+    
+    func routeToDetail() {
+        guard let title = dataStore.title else { return }
+        
+        let destination = TitileDetailConfigurator.configureModule(title: title)
+        viewControlle?.present(destination, animated: true, completion: nil)
+    }
+    
 }
